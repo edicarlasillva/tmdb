@@ -1,13 +1,28 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <!-- <img src="./assets/logo.png"> -->
     <router-view/>
+    <Search/>
   </div>
 </template>
 
 <script>
+import Search from './components/Search'
 export default {
-  name: 'App'
+ name: 'App',
+ components: {
+  Search
+ }
+}
+</script>
+
+<script>
+import Search from './components/Search'
+export default {
+ name: 'App',
+ components: {
+  Search
+ }
 }
 </script>
 
