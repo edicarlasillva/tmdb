@@ -23,7 +23,14 @@
             <div class="card__vote-average">
               {{ result.vote_average * 10 }}%
             </div>
-            <div class="card__date">{{ result.release_date }}</div>
+            <div class="card__date">
+              {{
+                result.release_date
+                  .split("-")
+                  .reverse()
+                  .join("-")
+              }}
+            </div>
           </div>
         </header>
         <div class="card__main">
@@ -84,10 +91,10 @@ export default {
                     genres: response2.data.genres
                   });
                 })
-                .catch(error => alert("falha ao consultar dados na api."));
+                .catch(error => alert("Falha ao consultar os dados na api."));
             }
           })
-          .catch(error => alert("falha ao consultar dados na api."));
+          .catch(error => alert("Falha ao consultar os dados na api."));
       } else if (this.query.length == 0) {
         this.results = "";
       }
