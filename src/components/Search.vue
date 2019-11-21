@@ -13,6 +13,7 @@
         <img
           v-bind:src="'http://image.tmdb.org/t/p/w500/' + result.poster_path"
         />
+        <!-- <img src="./../assets/no-image.png" alt="" v-else /> -->
       </figure>
       <div class="card__container">
         <header class="card__header">
@@ -102,105 +103,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.search {
-  display: flex;
-  justify-content: center;
-  margin: 40px 0;
-}
-.search input {
-  background-color: #ebebeb;
-  width: 100%;
-  padding: 15px 20px;
-  border-radius: 20px;
-  border: 0;
-  outline: 0;
-}
-/* Placeholder */
-::placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #116193;
-  opacity: 1; /* Firefox */
-}
-
-:-ms-input-placeholder {
-  /* Internet Explorer 10-11 */
-  color: #116193;
-}
-
-::-ms-input-placeholder {
-  /* Microsoft Edge */
-  color: #116193;
-}
-.card {
-  background-color: #ebebeb;
-  margin-bottom: 30px;
-  display: flex;
-}
-.card__header {
-  display: flex;
-  flex-direction: column;
-}
-.card__info {
-  display: flex;
-  margin-left: 20px;
-}
-.card__container {
-  width: 100%;
-}
-.card__image img {
-  min-width: 250px;
-  width: 250px;
-}
-.card__title {
-  background-color: #116193;
-  padding: 20px 20px 5px;
-  width: 100%;
-}
-.card__title h1 {
-  font-size: 2rem;
-  color: #00e8e4;
-  margin-left: 80px;
-}
-.card__main {
-  padding: 10px 30px;
-}
-.card__genres {
-  margin-top: 20px;
-}
-.card__genres ul {
-  display: flex;
-}
-.card__genres li {
-  background-color: #fff;
-  padding: 5px 10px;
-  border: 1px solid #116193;
-  color: #116193;
-  border-radius: 20px;
-  margin-right: 10px;
-}
-.card__vote-average {
-  background-color: #116193;
-  border-radius: 100%;
-  width: 60px;
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #00e8e4;
-  font-size: 1rem;
-  font-weight: 400;
-  transform: translateY(-50%);
-  /* border: 5px solid #00E8E4; */
-  box-shadow: 0px 0px 0px 5px #00e8e4 inset;
-  margin-right: 20px;
-}
-.card__date {
-  color: #555555;
-  font-weight: 300;
-}
-.card__overview {
-  color: #555555;
-}
-</style>
