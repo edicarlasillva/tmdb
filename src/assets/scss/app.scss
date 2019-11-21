@@ -95,13 +95,13 @@ h1 {
       flex-direction: column;
 
       .card__title {
-        background-color: #116193;
+        background-color: $color-primary;
         padding: 20px 20px 5px;
         width: 100%;
 
         h1 {
           font-size: 2rem;
-          color: #00e8e4;
+          color: $color-secundary;
           margin-left: 80px;
         }
       }
@@ -113,7 +113,7 @@ h1 {
         margin-left: 20px;
 
         .card__vote-average {
-          background-color: #116193;
+          background-color: $color-primary;
           border-radius: 100%;
           width: 60px;
           height: 60px;
@@ -126,14 +126,12 @@ h1 {
           -webkit-box-align: center;
           -ms-flex-align: center;
           align-items: center;
-          color: #00e8e4;
+          color: $color-secundary;
           font-size: 1rem;
           font-weight: 400;
           -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
-          /* border: 5px solid #00E8E4; */
-          -webkit-box-shadow: 0px 0px 0px 5px #00e8e4 inset;
-          box-shadow: 0px 0px 0px 5px #00e8e4 inset;
+          border: 5px solid #00E8E4;
           margin-right: 20px;
         }
 
@@ -162,8 +160,8 @@ h1 {
           li {
             background-color: #fff;
             padding: 5px 10px;
-            border: 1px solid #116193;
-            color: #116193;
+            border: 1px solid $color-primary;
+            color: $color-primary;
             border-radius: 20px;
             margin-right: 10px;
           }
