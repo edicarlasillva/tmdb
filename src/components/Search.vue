@@ -5,7 +5,7 @@
         type="text"
         v-model="query"
         @keyup="getResult"
-        placeholder="Busque um filme por nome, ano ou gênero..."
+        placeholder="Busque um filme por nome ou gênero..."
       />
     </section>
     <section class="card" v-for="result in results" :key="result.id">
@@ -18,7 +18,9 @@
       <div class="card__container">
         <header class="card__header">
           <div class="card__title">
-            <h1>{{ result.title }}</h1>
+            <h1>
+              <a href="#" @click.prevent="detailsMovie(result.id)">{{ result.title }}</a>
+            </h1>
           </div>
           <div class="card__info">
             <div class="card__vote-average">
@@ -84,6 +86,7 @@ export default {
                 .then(response2 => {
                   //CRIA UM NOVO OBJETO CONTENDO O TITULO O POSTER E OS GENEROS
                   this.results.push({
+                    id: temp[i].id,
                     title: temp[i].title,
                     poster_path: temp[i].poster_path,
                     vote_average: temp[i].vote_average,
@@ -99,6 +102,9 @@ export default {
       } else if (this.query.length == 0) {
         this.results = "";
       }
+    },
+    detailsMovie(id){
+      this.$router.push({ path: `/movie/${id}` });
     }
   }
 };

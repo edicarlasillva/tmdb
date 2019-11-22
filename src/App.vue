@@ -5,7 +5,6 @@
     </header>
     <div class="container">
       <router-view />
-      <search />
     </div>
   </div>
 </template>
