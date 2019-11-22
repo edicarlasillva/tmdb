@@ -22,14 +22,7 @@
           </div>
           <div class="card__info">
             <div class="card__vote-average">{{ result.vote_average * 10 }}%</div>
-            <div class="card__date">
-              {{
-              result.release_date
-              .split("-")
-              .reverse()
-              .join("-")
-              }}
-            </div>
+            <div class="card__date">{{ result.release_date }}</div>
           </div>
         </header>
         <div class="card__main">
@@ -82,7 +75,10 @@ export default {
                     title: temp[i].title,
                     poster_path: temp[i].poster_path,
                     vote_average: temp[i].vote_average,
-                    release_date: temp[i].release_date,
+                    release_date: temp[i].release_date
+                      .split("-")
+                      .reverse()
+                      .join("/"),
                     overview: temp[i].overview,
                     genres: response2.data.genres
                   });

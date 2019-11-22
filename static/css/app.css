@@ -20,7 +20,7 @@ iframe {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center; }
-  .hero .hero__title {
+  .hero__title {
     color: #00e8e4;
     font-size: 2rem; }
 
@@ -65,12 +65,12 @@ iframe {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex; }
-  .card .card__image img {
+  .card__image img {
     min-width: 250px;
     width: 250px; }
-  .card .card__container {
+  .card__container {
     width: 100%; }
-    .card .card__container .card__header {
+    .card__container .card__header {
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
@@ -78,21 +78,21 @@ iframe {
       -webkit-box-direction: normal;
       -ms-flex-direction: column;
       flex-direction: column; }
-      .card .card__container .card__header .card__title {
+      .card__container .card__header .card__title {
         background-color: #116193;
         padding: 20px 20px 5px;
         width: 100%; }
-        .card .card__container .card__header .card__title h1 a {
+        .card__container .card__header .card__title h1 a {
           font-size: 2rem;
           color: #00e8e4;
           margin-left: 80px;
           text-decoration: none; }
-      .card .card__container .card__header .card__info {
+      .card__container .card__header .card__info {
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
         margin-left: 20px; }
-        .card .card__container .card__header .card__info .card__vote-average {
+        .card__container .card__header .card__info .card__vote-average {
           background-color: #116193;
           border-radius: 100%;
           width: 60px;
@@ -113,22 +113,22 @@ iframe {
           transform: translateY(-50%);
           border: 5px solid #00E8E4;
           margin-right: 20px; }
-        .card .card__container .card__header .card__info .card__date {
+        .card__container .card__header .card__info .card__date {
           color: #555555;
           font-weight: 300; }
-    .card .card__container .card__main {
+    .card__container .card__main {
       padding: 10px 30px; }
-      .card .card__container .card__main .card__overview {
+      .card__container .card__main .card__overview {
         color: #555555; }
-      .card .card__container .card__main .card__genres {
+      .card__container .card__main .card__genres {
         margin-top: 20px; }
-        .card .card__container .card__main .card__genres ul {
+        .card__container .card__main .card__genres ul {
           display: -webkit-box;
           display: -ms-flexbox;
           display: flex;
           -ms-flex-wrap: wrap;
           flex-wrap: wrap; }
-          .card .card__container .card__main .card__genres ul li {
+          .card__container .card__main .card__genres ul li {
             background-color: #fff;
             padding: 5px 10px;
             border: 1px solid #116193;
@@ -267,6 +267,32 @@ iframe {
             -webkit-box-direction: normal;
             -ms-flex-direction: column;
             flex-direction: column; }
+        .inner-page-top-left__overview.genre-averange {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+          justify-content: space-between; }
+          .inner-page-top-left__overview.genre-averange .vote-average {
+            background-color: #116193;
+            border-radius: 100%;
+            width: 120px;
+            height: 120px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            color: #00e8e4;
+            font-size: 2rem;
+            font-weight: 400;
+            border: 5px solid #00E8E4;
+            margin-right: 20px; }
     .inner-page-top-right {
       -webkit-box-flex: 1;
       -ms-flex-positive: 1;
@@ -274,6 +300,8 @@ iframe {
       .inner-page-top-right-image {
         min-width: 350px;
         width: 350px; }
+  .inner-page__bottom {
+    margin-top: 30px; }
 
 @media (min-width: 320px) and (max-width: 767px) {
   .card {

@@ -28,7 +28,7 @@ iframe {
   -ms-flex-pack: center;
   justify-content: center;
 
-  .hero__title {
+  &__title {
     color: $color-secundary;
     font-size: 2rem;
   }
@@ -80,14 +80,14 @@ iframe {
   display: -ms-flexbox;
   display: flex;
 
-  .card__image {
+  &__image {
     img {
       min-width: 250px;
       width: 250px;
     }
   }
 
-  .card__container {
+  &__container {
     width: 100%;
 
     .card__header {
@@ -346,6 +346,36 @@ iframe {
             flex-direction: column;
           }
         }
+
+        &.genre-averange {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+          justify-content: space-between;
+
+          .vote-average {
+            background-color: #116193;
+            border-radius: 100%;
+            width: 120px;
+            height: 120px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            color: #00e8e4;
+            font-size: 2rem;
+            font-weight: 400;
+            border: 5px solid #00E8E4;
+            margin-right: 20px;
+          }
+        }
       }
     }
 
@@ -360,8 +390,11 @@ iframe {
       }
     }
   }
-}
 
+  &__bottom {
+    margin-top: 30px;
+  }
+}
 
 @media (min-width: 320px) and (max-width: 767px) {
   .card {

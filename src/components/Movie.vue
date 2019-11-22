@@ -4,7 +4,7 @@
       <header class="inner-page-top__header">
         <div class="container align-header">
           <h1 class="inner-page-top__header-title">{{ title }}</h1>
-          <span class="inner-page-top__header-date">{{ release_date }}</span>
+          <span class="inner-page-top__header-date">{{ date }}</span>
         </div>
       </header>
       <article class="article">
@@ -30,7 +30,7 @@
               </div>
               <div>
                 <h2 class="inner-page-top-left__overview-info-title">Duração</h2>
-                <p class="inner-page-top-left__overview-text">{{ runtime }}</p>
+                <p class="inner-page-top-left__overview-text">{{ runtime }}min</p>
               </div>
               <div>
                 <h2 class="inner-page-top-left__overview-info-title">Orçamento</h2>
@@ -46,12 +46,13 @@
               </div>
             </div>
           </div>
-          <div class="inner-page-top-left__overview">
+          <div class="inner-page-top-left__overview genre-averange">
             <ul class="inner-page-top-left__overview-genres">
               <li v-for="genre in genres" :key="genre.id">
                 {{ genre.name }}
               </li>
             </ul>
+            <div class="vote-average">{{ vote_average * 10 }}%</div>
           </div>
         </div>
         <div class="inner-page-top-right">
@@ -86,7 +87,8 @@ export default {
       poster_path: "",
       spoken_languages: [],
       genres: [], 
-      key: ""
+      key: "",
+      vote_average: ""
     };
   },
   methods: {
@@ -111,6 +113,7 @@ export default {
           this.poster_path = movie.poster_path;
           this.spoken_languages = movie.spoken_languages;
           this.genres = movie.genres;
+          this.vote_average = movie.vote_average;
         })
         .catch(error => alert("Falha ao consultar os dados na api."));
     },
@@ -128,13 +131,16 @@ export default {
   },
   computed: {
     profit(){
-      return (this.revenue - this.budget).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })   
+      return (this.revenue - this.budget).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });   
     },
     recipe(){
-      return this.revenue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })   
+      return this.revenue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });   
     },
     estimate(){
-      return this.budget.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) 
+      return this.budget.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }); 
+    },
+    date(){
+      return this.release_date.split("-").reverse().join("/");
     }
   },
   mounted() {
