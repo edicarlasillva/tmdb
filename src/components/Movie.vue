@@ -61,7 +61,9 @@
         </div>
       </article>
     </div>
-    <div class="inner-page__bottom">Teste</div>
+    <div class="inner-page__bottom">
+     <iframe width="560" height="315" src="`https://www.youtube.com/embed/${key}`" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
   </div>
 </template>
 
@@ -72,6 +74,7 @@ export default {
   data() {
     return {
       movie: [],
+      trailer: [],
       title: "",
       release_date: "",
       overview: "",
@@ -82,7 +85,8 @@ export default {
       revenue: "",
       poster_path: "",
       spoken_languages: [],
-      genres: []
+      genres: [], 
+      key: ""
     };
   },
   methods: {
@@ -109,6 +113,16 @@ export default {
           this.genres = movie.genres;
         })
         .catch(error => alert("Falha ao consultar os dados na api."));
+    },
+    getResultTrailer(){
+      axios.get(` https://api.themoviedb.org/3/movie/${this.$route.params.id}/videos?api_key=08555db9f6be8fa06d4c47bc7e2d3335`)
+      .then(response2 => {
+        let trailer = response2.data.results.filter(item => {
+          return item.type === "Trailer"
+        });
+        console.log(trailer);
+        this.key = trailer[0].key
+      })
     }
   },
   computed: {
@@ -125,6 +139,7 @@ export default {
   mounted() {
     this.$route.params.id;
     this.getResult();
+    this.getResultTrailer();
   }
 };
 </script>
