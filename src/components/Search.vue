@@ -69,10 +69,13 @@ export default {
                     title: temp[i].title,
                     poster_path: temp[i].poster_path,
                     vote_average: temp[i].vote_average,
-                    release_date: temp[i].release_date
-                      .split("-")
-                      .reverse()
-                      .join("/"),
+                    release_date:
+                      temp[i].release_date != undefined
+                        ? temp[i].release_date
+                            .split("-")
+                            .reverse()
+                            .join("/")
+                        : null,
                     overview: temp[i].overview,
                     genres: response2.data.genres
                   });
