@@ -1,12 +1,68 @@
 <template>
-<div>
-  <h1>{{ title }}</h1>
-  <h1>{{ release_date }}</h1>
-  <h1>{{ overview }}</h1>
-  <h1>{{ poster_path }}</h1>
-  <h1>{{ status }}</h1>
-</div>
-  
+  <div class="inner-page">
+    <div class="inner-page-top">
+      <header class="inner-page-top__header">
+        <div class="container align-header">
+          <h1 class="inner-page-top__header-title">{{ title }}</h1>
+          <span class="inner-page-top__header-date">{{ release_date }}</span>
+        </div>
+      </header>
+      <article class="article">
+        <div class="inner-page-top-left container">
+          <div class="inner-page-top-left__overview">
+            <h2 class="inner-page-top-left__overview-title">Sinopse</h2>
+            <p class="inner-page-top-left__overview-text">{{ overview }}</p>
+          </div>
+          <div class="inner-page-top-left__overview">
+            <h2 class="inner-page-top-left__overview-title">Informações</h2>
+            <div class="inner-page-top-left__overview-info">
+              <div>
+                <h2 class="inner-page-top-left__overview-info-title">Situação</h2>
+                <p class="inner-page-top-left__overview-text">{{ status }}</p>
+              </div>
+              <div>
+                <h2 class="inner-page-top-left__overview-info-title">Idioma</h2>
+                <p class="inner-page-top-left__overview-text">
+                  <ul>
+                    <li v-for="spoken_language in spoken_languages" :key="spoken_language.id">{{ spoken_language.name }}</li>
+                  </ul>
+                </p>
+              </div>
+              <div>
+                <h2 class="inner-page-top-left__overview-info-title">Duração</h2>
+                <p class="inner-page-top-left__overview-text">{{ runtime }}</p>
+              </div>
+              <div>
+                <h2 class="inner-page-top-left__overview-info-title">Orçamento</h2>
+                <p class="inner-page-top-left__overview-text">{{ estimate }}</p>
+              </div>
+              <div>
+                <h2 class="inner-page-top-left__overview-info-title">Receita</h2>
+                <p class="inner-page-top-left__overview-text">{{ recipe }}</p>
+              </div>
+              <div>
+                <h2 class="inner-page-top-left__overview-info-title">Lucro</h2>
+                <p class="inner-page-top-left__overview-text">{{ profit }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="inner-page-top-left__overview">
+            <ul class="inner-page-top-left__overview-genres">
+              <li v-for="genre in genres" :key="genre.id">
+                {{ genre.name }}
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="inner-page-top-right">
+          <figure>
+            <img class="inner-page-top-right-image" v-bind:src="`http://image.tmdb.org/t/p/w500/${poster_path}`" />
+          </figure>
+        </div>
+      </article>
+    </div>
+    <div class="inner-page__bottom">Teste</div>
+  </div>
 </template>
 
 <script>
@@ -20,29 +76,55 @@ export default {
       release_date: "",
       overview: "",
       poster_path: "",
-      status: ""
+      status: "",
+      runtime: "",
+      budget: "",
+      revenue: "",
+      poster_path: "",
+      spoken_languages: [],
+      genres: []
     };
   },
   methods: {
-    getResult(){
-      axios.get(`https://api.themoviedb.org/3/movie/${this.$route.params.id}?api_key=08555db9f6be8fa06d4c47bc7e2d3335`)
-           .then(response => {
-              let movie = response.data;
-              console.log(response.data);
-              this.id = movie.id,
-              this.title = movie.title,
-              this.poster_path = movie.poster_path,
-              this.vote_average = movie.vote_average,
-              this.release_date = movie.release_date,
-              this.overview = movie.overview,
-              this.status = movie.status
-          })
-          .catch(error => alert("Falha ao consultar os dados na api."));
+    getResult() {
+      axios
+        .get(
+          `https://api.themoviedb.org/3/movie/${this.$route.params.id}?api_key=08555db9f6be8fa06d4c47bc7e2d3335&language=pt-BR`
+        )
+        .then(response => {
+          let movie = response.data;
+          console.log(response.data);
+          this.id = movie.id;
+          this.title = movie.title;
+          this.poster_path = movie.poster_path;
+          this.vote_average = movie.vote_average;
+          this.release_date = movie.release_date;
+          this.overview = movie.overview;
+          this.status = movie.status;
+          this.runtime = movie.runtime;
+          this.budget = movie.budget;
+          this.revenue = movie.revenue;
+          this.poster_path = movie.poster_path;
+          this.spoken_languages = movie.spoken_languages;
+          this.genres = movie.genres;
+        })
+        .catch(error => alert("Falha ao consultar os dados na api."));
+    }
+  },
+  computed: {
+    profit(){
+      return (this.revenue - this.budget).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })   
     },
+    recipe(){
+      return this.revenue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })   
+    },
+    estimate(){
+      return this.budget.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) 
+    }
   },
   mounted() {
     this.$route.params.id;
     this.getResult();
-  },
-}
+  }
+};
 </script>

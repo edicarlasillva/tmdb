@@ -3,7 +3,7 @@
     <header class="hero">
       <h1 class="hero__title">Movies</h1>
     </header>
-    <div class="container">
+    <div class>
       <router-view />
     </div>
   </div>

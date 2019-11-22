@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <section class="search">
       <input
         type="text"
@@ -10,9 +10,7 @@
     </section>
     <section class="card" v-for="result in results" :key="result.id">
       <figure class="card__image">
-        <img
-          v-bind:src="'http://image.tmdb.org/t/p/w500/' + result.poster_path"
-        />
+        <img v-bind:src="'http://image.tmdb.org/t/p/w500/' + result.poster_path" />
         <!-- <img src="./../assets/no-image.png" alt="" v-else /> -->
       </figure>
       <div class="card__container">
@@ -23,28 +21,22 @@
             </h1>
           </div>
           <div class="card__info">
-            <div class="card__vote-average">
-              {{ result.vote_average * 10 }}%
-            </div>
+            <div class="card__vote-average">{{ result.vote_average * 10 }}%</div>
             <div class="card__date">
               {{
-                result.release_date
-                  .split("-")
-                  .reverse()
-                  .join("-")
+              result.release_date
+              .split("-")
+              .reverse()
+              .join("-")
               }}
             </div>
           </div>
         </header>
         <div class="card__main">
-          <div class="card__overview">
-            {{ result.overview }}
-          </div>
+          <div class="card__overview">{{ result.overview }}</div>
           <div class="card__genres">
             <ul>
-              <li v-for="genre in result.genres" :key="genre.id">
-                {{ genre.name }}
-              </li>
+              <li v-for="genre in result.genres" :key="genre.id">{{ genre.name }}</li>
             </ul>
           </div>
         </div>
@@ -69,7 +61,7 @@ export default {
         //OBTEM A LISTA DE FILMES APARTIR DA LISTA
         axios
           .get(
-            `https://api.themoviedb.org/3/search/movie?api_key=08555db9f6be8fa06d4c47bc7e2d3335&query=${this.query}`
+            `https://api.themoviedb.org/3/search/movie?api_key=08555db9f6be8fa06d4c47bc7e2d3335&query=${this.query}&language=pt-BR`
           )
           .then(response => {
             //COLOCA O RESULTADO EM UM TEMPORARIO
@@ -81,7 +73,7 @@ export default {
             for (let i = 0; i < temp.length; i++) {
               axios
                 .get(
-                  `https://api.themoviedb.org/3/movie/${temp[i].id}?api_key=08555db9f6be8fa06d4c47bc7e2d3335`
+                  `https://api.themoviedb.org/3/movie/${temp[i].id}?api_key=08555db9f6be8fa06d4c47bc7e2d3335&language=pt-BR`
                 )
                 .then(response2 => {
                   //CRIA UM NOVO OBJETO CONTENDO O TITULO O POSTER E OS GENEROS
@@ -103,7 +95,7 @@ export default {
         this.results = "";
       }
     },
-    detailsMovie(id){
+    detailsMovie(id) {
       this.$router.push({ path: `/movie/${id}` });
     }
   }
