@@ -51,25 +51,19 @@ export default {
   methods: {
     getResult() {
       if (this.query.length >= 6) {
-        //OBTEM A LISTA DE FILMES APARTIR DA LISTA
         axios
           .get(
             `https://api.themoviedb.org/3/search/movie?api_key=08555db9f6be8fa06d4c47bc7e2d3335&query=${this.query}&language=pt-BR`
           )
           .then(response => {
-            //COLOCA O RESULTADO EM UM TEMPORARIO
             let temp = response.data.results;
-            //ZERA A VARIAVEL RESULTS PARA GARANTIR
             this.results = [];
-
-            //FAZ UM LACO EM CADA FILME DA LISTA PEGANDO SEUS DETALHES
             for (let i = 0; i < temp.length; i++) {
               axios
                 .get(
                   `https://api.themoviedb.org/3/movie/${temp[i].id}?api_key=08555db9f6be8fa06d4c47bc7e2d3335&language=pt-BR`
                 )
                 .then(response2 => {
-                  //CRIA UM NOVO OBJETO CONTENDO O TITULO O POSTER E OS GENEROS
                   this.results.push({
                     id: temp[i].id,
                     title: temp[i].title,
