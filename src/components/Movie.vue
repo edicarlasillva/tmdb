@@ -123,6 +123,7 @@ export default {
         console.log(trailer);
         this.key = trailer[0].key
       })
+      .catch(error => alert("Falha ao consultar os dados na api."));
     }
   },
   computed: {
